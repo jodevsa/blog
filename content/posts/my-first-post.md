@@ -1,7 +1,7 @@
 ---
 title: "Creating a Wireguad VPN in kubernetes"
 date: 2023-04-06T21:18:49+02:00
-draft: true
+draft: false
 ---
 
 ![Example image](/static/img/intro.png)

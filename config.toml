@@ -2,6 +2,7 @@ baseURL = 'http://blog.jodevsa.com/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "hugo-theme-monochrome"
+publishDir = "./docs"
 
 
 

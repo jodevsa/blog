@@ -1,0 +1,12 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = "hugo-theme-monochrome"
+
+
+
+[[menu.navbar]]
+identifier = "posts"
+name = "posts"
+url = "/posts/"
+weight = -100

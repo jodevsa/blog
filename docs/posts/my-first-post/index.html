@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>
+  Creating a Wireguad VPN in kubernetes · jodevsa
+</title>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Subhi Al Hasan">
+<meta name="description" content="What is wireguad? Link to heading WireGuard is a modern VPN protocol that is designed to be faster, simpler, and more secure than other VPN protocols such as OpenVPN and IPSec. It uses modern cryptography techniques and is built into the Linux kernel, making it highly efficient and lightweight.
+What is kubernetes? Link to heading Kubernetes is a powerful container orchestration platform that automates the deployment, scaling, and management of containerized applications.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Creating a Wireguad VPN in kubernetes"/>
+<meta name="twitter:description" content="What is wireguad? Link to heading WireGuard is a modern VPN protocol that is designed to be faster, simpler, and more secure than other VPN protocols such as OpenVPN and IPSec. It uses modern cryptography techniques and is built into the Linux kernel, making it highly efficient and lightweight.
+What is kubernetes? Link to heading Kubernetes is a powerful container orchestration platform that automates the deployment, scaling, and management of containerized applications."/>
+
+<meta property="og:title" content="Creating a Wireguad VPN in kubernetes" />
+<meta property="og:description" content="What is wireguad? Link to heading WireGuard is a modern VPN protocol that is designed to be faster, simpler, and more secure than other VPN protocols such as OpenVPN and IPSec. It uses modern cryptography techniques and is built into the Linux kernel, making it highly efficient and lightweight.
+What is kubernetes? Link to heading Kubernetes is a powerful container orchestration platform that automates the deployment, scaling, and management of containerized applications." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.jodevsa.com/posts/my-first-post/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-04-06T21:18:49+02:00" />
+<meta property="article:modified_time" content="2023-04-06T21:18:49+02:00" />
+
+
+
+
+<link rel="canonical" href="https://blog.jodevsa.com/posts/my-first-post/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.65236a6d834b26194eed04a2a3b45e44d9194ef9e620253705d4bef03bd7ef81.css" integrity="sha256-ZSNqbYNLJhlO7QSio7ReRNkZTvnmICU3BdS&#43;8DvX74E=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.f6534b0b446b75d9b6ad77a97d43ede2ddaeff1b6e2361fb7198d6f8fcb7f83f.css" integrity="sha256-9lNLC0Rrddm2rXepfUPt4t2u/xtuI2H7cZjW&#43;Py3&#43;D8=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+
+
+
+
+
+</head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      jodevsa
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/">About</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/projects/">Projects</a>
+            </li>
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/contact/">Contact me</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="https://blog.jodevsa.com/posts/my-first-post/">
+              Creating a Wireguad VPN in kubernetes
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2023-04-06T21:18:49&#43;02:00">
+                April 6, 2023
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              2-minute read
+            </span>
+          </div>
+          
+          
+          
+        </div>
+      </header>
+
+      <div class="post-content">
+        
+        <p><img src="/static/img/intro.png" alt="Example image"></p>
+<h2 id="what-is-wireguad">
+  What is wireguad?
+  <a class="heading-link" href="#what-is-wireguad">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>WireGuard is a modern VPN protocol that is designed to be faster, simpler, and more secure than other VPN protocols such as OpenVPN and IPSec. It uses modern cryptography techniques and is built into the Linux kernel, making it highly efficient and lightweight.</p>
+<h2 id="what-is-kubernetes">
+  What is kubernetes?
+  <a class="heading-link" href="#what-is-kubernetes">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Kubernetes is a powerful container orchestration platform that automates the deployment, scaling, and management of containerized applications. It provides a highly scalable and fault-tolerant infrastructure for running containerized applications.</p>
+<h2 id="what-is-wireguad-operator">
+  What is wireguad-operator?
+  <a class="heading-link" href="#what-is-wireguad-operator">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><img src="/static/img/wireguad-operator-repo-screenshot.png" alt="Example Image"></p>
+<p><code>jodevsa/wireguard-operator</code> is an open-source project that provides a Kubernetes Operator to manage WireGuard VPNs in a Kubernetes cluster.</p>
+<p>The WireGuard Operator uses the Kubernetes Custom Resource Definition (CRD) to define and manage WireGuard VPNs as Kubernetes resources. It provides a simple and easy-to-use interface to manage the WireGuard configuration, including creating and deleting peers, generating private and public keys, and configuring the VPN server and peers.</p>
+<p>The project is well-documented, with detailed instructions on how to install and use the WireGuard Operator in a Kubernetes cluster. It is actively maintained and regularly updated with new features and bug fixes.</p>
+<p>While jodevsa/wireguard-operator is a relatively new project, it is already being used in production environments by several organizations. This means that the project has been battle-tested and proven to be reliable and stable in real-world scenarios.</p>
+<p>Overall, jodevsa/wireguard-operator is a robust and feature-rich solution for managing WireGuard VPNs in Kubernetes, and it is a great choice for organizations that need a secure and scalable VPN solution in their Kubernetes cluster.</p>
+<h2 id="creating-a-wireguard-vpn-in-kubernetes-using-the-wireugad-operator">
+  Creating a WireGuard VPN in Kubernetes using the wireugad-operator
+  <a class="heading-link" href="#creating-a-wireguard-vpn-in-kubernetes-using-the-wireugad-operator">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<h3 id="step-1-install-wireguard-operator">
+  Step 1: Install wireguard-operator
+  <a class="heading-link" href="#step-1-install-wireguard-operator">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>The first step is to install the WireGuard Operator in your Kubernetes cluster. You can install it using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>kubectl apply -f https://raw.githubusercontent.com/jodevsa/wireguard-operator/main/release.yaml
+</span></span></code></pre></div><p>This command downloads the WireGuard Operator manifest from the jodevsa/wireguard-operator GitHub repository and applies it to your Kubernetes cluster.</p>
+<h3 id="step-2-verify-the-installation">
+  Step 2: Verify the Installation
+  <a class="heading-link" href="#step-2-verify-the-installation">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>After installing the WireGuard Operator, you can verify that it has been installed correctly by running the following command:</p>
+<p>You should see a controller-manager pod created in the wireguard-system namespace</p>
+<p><img src="/static/img/verify-wireguad-operato-installation.png" alt="pod"></p>
+<h3 id="step-3-create-a-wireguard-deployment">
+  Step 3: Create a WireGuard deployment
+  <a class="heading-link" href="#step-3-create-a-wireguard-deployment">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h3>
+<p>Now that the WireGuard Operator is installed, you can create a WireGuard configuration. You can create a configuration file in YAML format that specifies the VPN network and the peers that can connect to it.</p>
+<p>Here&rsquo;s an example configuration file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#c9d1d9;background-color:#0d1117;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apiVersion: vpn.example.com/v1alpha1
+</span></span><span style="display:flex;"><span>kind: Wireguard
+</span></span><span style="display:flex;"><span>metadata:
+</span></span><span style="display:flex;"><span>  name: my-pesonal-vpn
+</span></span></code></pre></div>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2023
+     Subhi Al Hasan 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.6ae284be93d2d19dad1f02b0039508d9aab3180a12a06dcc71b0b0ef7825a317.js" integrity="sha256-auKEvpPS0Z2tHwKwA5UI2aqzGAoSoG3McbCw73gloxc="></script>
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>

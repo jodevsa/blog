@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>jodevsa</title>
-    <link>https://blog.jodevsa.com/</link>
-    <description>Recent content on jodevsa</description>
+    <title>Posts on jodevsa</title>
+    <link>https://blog.jodevsa.com/posts/</link>
+    <description>Recent content in Posts on jodevsa</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 06 Apr 2023 21:18:49 +0200</lastBuildDate><atom:link href="https://blog.jodevsa.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 Apr 2023 21:18:49 +0200</lastBuildDate><atom:link href="https://blog.jodevsa.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a Wireguad VPN in kubernetes</title>
       <link>https://blog.jodevsa.com/posts/my-first-post/</link>
@@ -15,24 +15,6 @@
       <guid>https://blog.jodevsa.com/posts/my-first-post/</guid>
       <description>What is wireguad? Link to heading WireGuard is a modern VPN protocol that is designed to be faster, simpler, and more secure than other VPN protocols such as OpenVPN and IPSec. It uses modern cryptography techniques and is built into the Linux kernel, making it highly efficient and lightweight.
 What is kubernetes? Link to heading Kubernetes is a powerful container orchestration platform that automates the deployment, scaling, and management of containerized applications.</description>
-    </item>
-    
-    <item>
-      <title>Contact</title>
-      <link>https://blog.jodevsa.com/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.jodevsa.com/contact/</guid>
-      <description>Follow me, @jodevsa on Github</description>
-    </item>
-    
-    <item>
-      <title>Projects</title>
-      <link>https://blog.jodevsa.com/projects/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.jodevsa.com/projects/</guid>
-      <description>Nothing to see here&amp;hellip; Move along!</description>
     </item>
     
   </channel>

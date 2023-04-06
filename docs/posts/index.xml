@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My New Hugo Site</title>
+    <title>Posts on Subhis personal blogs</title>
     <link>http://blog.jodevsa.com/posts/</link>
-    <description>Recent content in Posts on My New Hugo Site</description>
+    <description>Recent content in Posts on Subhis personal blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 06 Apr 2023 21:18:49 +0200</lastBuildDate><atom:link href="http://blog.jodevsa.com/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
+      <title>Creating a Wireguard VPN in k8s</title>
       <link>http://blog.jodevsa.com/posts/my-first-post/</link>
       <pubDate>Thu, 06 Apr 2023 21:18:49 +0200</pubDate>
       
       <guid>http://blog.jodevsa.com/posts/my-first-post/</guid>
-      <description>Introduction This is bold text, and this is emphasized text.
-Visit the Hugo website!</description>
+      <description>What is wireguad? WireGuard is a modern VPN protocol that is designed to be faster, simpler, and more secure than other VPN protocols such as OpenVPN and IPSec. It uses modern cryptography techniques and is built into the Linux kernel, making it highly efficient and lightweight.
+What is kubernetes? Kubernetes is a powerful container orchestration platform that automates the deployment, scaling, and management of containerized applications. It provides a highly scalable and fault-tolerant infrastructure for running containerized applications.</description>
     </item>
     
   </channel>

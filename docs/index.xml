@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
+    <title>Subhi&#39;s personal blog</title>
     <link>http://blog.jodevsa.com/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <description>Recent content on Subhi&#39;s personal blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 06 Apr 2023 21:18:49 +0200</lastBuildDate><atom:link href="http://blog.jodevsa.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>My First Post</title>
-      <link>http://blog.jodevsa.com/posts/my-first-post/</link>
-      <pubDate>Thu, 06 Apr 2023 21:18:49 +0200</pubDate>
-      
-      <guid>http://blog.jodevsa.com/posts/my-first-post/</guid>
-      <description>Introduction This is bold text, and this is emphasized text.
-Visit the Hugo website!</description>
-    </item>
-    
+    <language>en-us</language><atom:link href="http://blog.jodevsa.com/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

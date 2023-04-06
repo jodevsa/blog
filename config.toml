@@ -1,6 +1,6 @@
 baseURL = 'http://blog.jodevsa.com/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = "Subhi's personal blog"
 theme = "hugo-theme-monochrome"
 publishDir = "./docs"
 
